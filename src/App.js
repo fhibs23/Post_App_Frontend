@@ -15,7 +15,7 @@ import BoardAdmin from "./components/board-admin.component";
 import AddTutorial from "./components/add-tutorial.component";
 import Tutorial from "./components/tutorial.component";
 import TutorialsList from "./components/tutorials-list.component";
-// import AuthVerify from "./common/auth-verify";
+import SendEmail from "./components/sendEmail";
 import EventBus from "./common/EventBus";
 
 class App extends Component {
@@ -63,20 +63,20 @@ class App extends Component {
     const { currentUser, showModeratorBoard, showAdminBoard } = this.state;
 
     return (
-      <div>
+      <div >
         <nav className="navbar navbar-expand navbar-dark bg-dark">
-          <Link to={"/"} className="navbar-brand">
-            
+          <Link to={"/"} className="brand" >
+            POST
           </Link>
           <div className="navbar-nav mr-auto">
-            <li className="nav-item">
+            <li className="item">
               <Link to={"/home"} className="nav-link">
                 Home
               </Link>
             </li>
 
             {showModeratorBoard && (
-              <li className="nav-item">
+              <li className="item">
                 <Link to={"/mod"} className="nav-link">
                   Moderator Board
                 </Link>
@@ -84,7 +84,7 @@ class App extends Component {
             )}
 
             {showAdminBoard && (
-              <li className="nav-item">
+              <li className="item">
                 <Link to={"/admin"} className="nav-link">
                   Admin Board
                 </Link>
@@ -92,7 +92,7 @@ class App extends Component {
             )}
 
             {currentUser && (
-              <li className="nav-item">
+              <li className="item">
                 <Link to={"/user"} className="nav-link">
                   User
                 </Link>
@@ -102,12 +102,12 @@ class App extends Component {
 
           {currentUser ? (
             <div className="navbar-nav ml-auto">
-              <li className="nav-item">
+              <li className="item">
                 <Link to={"/profile"} className="nav-link">
                   {currentUser.username}
                 </Link>
               </li>
-              <li className="nav-item">
+              <li className="item">
                 <a href="/login" className="nav-link" onClick={this.logOut}>
                   LogOut
                 </a>
@@ -115,13 +115,13 @@ class App extends Component {
             </div>
           ) : (
             <div className="navbar-nav ml-auto">
-              <li className="nav-item">
+              <li className="item">
                 <Link to={"/login"} className="nav-link">
                   Login
                 </Link>
               </li>
 
-              <li className="nav-item">
+              <li className="item">
                 <Link to={"/register"} className="nav-link">
                   Sign Up
                 </Link>
@@ -133,7 +133,7 @@ class App extends Component {
         <div className="container mt-3">
           <Switch>
             <Route exact path={["/", "/home"]} component={Home} />
-            <Route exact path="/login" component={Login} />
+            <Route exact path="/login" component={SendEmail} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/profile" component={Profile} />
             <Route path="/user" component={BoardUser} />

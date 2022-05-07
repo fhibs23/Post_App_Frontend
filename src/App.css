@@ -27,3 +27,21 @@ label {
   -webkit-border-radius: 50%;
   border-radius: 50%;
 }
+div .brand{
+  color: rgb(95, 151, 153);
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 45px;
+  top: -5px;
+  position: absolute;
+    left: 50%;
+    margin-left: -50px !important;  /* 50% of your logo width */
+    display: block;
+
+}
+body{
+  background-color:#b9aed6;
+}
+.navbar {
+  position: relative;
+}
+
