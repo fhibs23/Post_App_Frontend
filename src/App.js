@@ -70,6 +70,11 @@ class App extends Component {
           </Link>
           <div className="navbar-nav mr-auto">
             <li className="item">
+              <Link to={"/sendMail"} className="nav-link">
+                Send Mail
+              </Link>
+            </li>
+            <li className="item">
               <Link to={"/home"} className="nav-link">
                 Home
               </Link>
@@ -133,7 +138,8 @@ class App extends Component {
         <div className="container mt-3">
           <Switch>
             <Route exact path={["/", "/home"]} component={Home} />
-            <Route exact path="/login" component={SendEmail} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/sendMail" component={SendEmail} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/profile" component={Profile} />
             <Route path="/user" component={BoardUser} />
