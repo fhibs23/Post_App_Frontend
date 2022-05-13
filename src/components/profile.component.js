@@ -7,6 +7,7 @@ export default class Profile extends Component {
       currentUser: AuthService.getCurrentUser()
     };
   }
+  
   render() {
     const { currentUser } = this.state;
     return (

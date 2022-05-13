@@ -28,7 +28,7 @@ label {
   border-radius: 50%;
 }
 div .brand{
-  color: rgb(95, 151, 153);
+  color: rgb(113, 222, 226);
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-size: 45px;
   top: -5px;
@@ -44,4 +44,3 @@ body{
 .navbar {
   position: relative;
 }
-

@@ -3,14 +3,22 @@ import React from "react";
 import '../styles/Email.css';
 import {toast, ToastContainer} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import Parse from 'parse/dist/parse.min.js';
 import axios from "axios";
 
-export default function SendEmail() {
+const getCurrentUser = async function () {
+    const currentUser = await Parse.User.current();
+     const email=currentUser.name; 
+    return "21";
+  };
+
+function SendEmail() {
     const [email, setEmail] = useState('');
     const [subject, setSubject] = useState('');
     const [message, setMessage] = useState('');
     const [loading, setLoading] = useState(false);
-
+    const from=getCurrentUser();
+    
     const submitHandler = async (e) => {
         e.preventDefault();
         if (!email || !subject || !message) {
@@ -18,7 +26,8 @@ export default function SendEmail() {
         }
         try {
             setLoading(true);
-            const { data } = await axios.post(`/api/email`, {
+            const { data } = await axios.post(`http://localhost:8080/api/email`, {
+                from,
                 email,
                 subject,
                 message,
@@ -35,7 +44,7 @@ export default function SendEmail() {
         }
     };
     return (
-        <div className="App">
+        <div className="box">
             <ToastContainer position="bottom-center" limit={1} />
             <header className="App-header">
                 <form onSubmit={submitHandler}>
@@ -63,13 +72,16 @@ export default function SendEmail() {
                         ></textarea>
                     </div>
                     <div>
-                        <label></label>
-                        <button disabled={loading} type="submit">
-                            {loading ? 'Sending...' : 'Submit'}
+                        <label>
+                        <button  disabled={loading} type="send" >
+                            {loading ? 'Sending...' : 'Send'}
                         </button>
+                        </label>
                     </div>
                 </form>
             </header>
         </div>
     );
 }
+
+export default SendEmail;
