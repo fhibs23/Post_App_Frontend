@@ -1,34 +1,25 @@
 import React, { Component } from "react";
-import UserService from "../services/user.service";
+import '../styles/home-page.css'
+import AuthService from "../services/auth.service";
+import { Switch, Route, Link } from "react-router-dom";
 export default class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      content: ""
+      currentUser: AuthService.getCurrentUser()
     };
   }
-  componentDidMount() {
-    UserService.getPublicContent().then(
-      response => {
-        this.setState({
-          content: response.data
-        });
-      },
-      error => {
-        this.setState({
-          content:
-            (error.response && error.response.data) ||
-            error.message ||
-            error.toString()
-        });
-      }
-    );
-  }
+
   render() {
     return (
       <div className="container">
         <header className="jumbotron">
-          <h3>{this.state.content}</h3>
+          <h2>Welcome to our post service!</h2>
+<br/>
+            <p>
+              To send an email <Link to={"/register"}>Signup</Link> or <Link to={"/login"}>Login</Link>
+            </p>
+
         </header>
       </div>
     );

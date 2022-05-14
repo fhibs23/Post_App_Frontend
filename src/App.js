@@ -11,9 +11,6 @@ import Home from "./components/home.component";
 import Profile from "./components/profile.component";
 import BoardUser from "./components/board-user.component";
 import BoardAdmin from "./components/board-admin.component";
-import AddTutorial from "./components/add-tutorial.component";
-import Tutorial from "./components/tutorial.component";
-import TutorialsList from "./components/tutorials-list.component";
 import SendEmail from "./components/sendEmail";
 import EventBus from "./common/EventBus";
 
@@ -60,15 +57,19 @@ class App extends Component {
 
     return (
       <div >
+      <title>Post</title>
         <nav className="navbar navbar-expand navbar-dark bg-dark">
+          <div className="nav">
           <Link to={"/"} className="brand" >
             POST
           </Link>
+        </div>
+          <div className="nav">
           <div className="navbar-nav mr-auto">
-            
+
             <li className="item">
               <Link to={"/home"} className="nav-link">
-                Home
+                About Us
               </Link>
             </li>
 
@@ -120,6 +121,7 @@ class App extends Component {
               </li>
             </div>
           )}
+          </div>
         </nav>
 
         <div className="container mt-3">
@@ -131,9 +133,6 @@ class App extends Component {
             <Route exact path="/profile" component={Profile} />
             <Route path="/user" component={BoardUser} />
             <Route path="/admin" component={BoardAdmin} />
-            <Route exact path={["/", "/tutorials"]} component={TutorialsList} />
-            <Route exact path="/add" component={AddTutorial} />
-            <Route path="/tutorials/:id" component={Tutorial} />
           </Switch>
         </div>
 

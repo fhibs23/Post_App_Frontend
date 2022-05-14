@@ -104,6 +104,7 @@ export default class Login extends Component {
                 validations={[required]}
               />
             </div>
+            <br/>
             <div className="form-group">
               <button
                 className="btn btn-primary btn-block"
