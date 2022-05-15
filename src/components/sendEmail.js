@@ -13,7 +13,6 @@ function SendEmail() {
     const [subject, setSubject] = useState('');
     const [message, setMessage] = useState('');
     const [loading, setLoading] = useState(false);
-    const [attachment,setAttachment]=useState('');
     const currentUser =  AuthService.getCurrentUser();
     const from=currentUser.email;
     const sender=currentUser.username;
@@ -30,7 +29,6 @@ function SendEmail() {
                 email,
                 subject,
                 message,
-                attachment,
             });
             setLoading(false);
             toast.success(data.message);
@@ -71,13 +69,7 @@ function SendEmail() {
                             onChange={(e) => setMessage(e.target.value)}
                         ></textarea>
                     </div>
-                    <div>
-                        <label htmlFor="attachment">Attachment</label>
-                        <input id="attachment"
-                               name="attachment"
-                               type="file"
-                        onChange={(e)=>setAttachment(e.target.value)}/>
-                    </div>
+
                     <div>
                         <label>
                         <button  disabled={loading} type="send" >
